@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Science Gothic';
+  src: url('../fonts/ScienceGothic-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  // 3.1 配色 Color
+  --color-primary-a: #2b7fd4; // 主色 A：天空藍
+  --color-primary-a-dark: #185fa5; // 主色 A 深（文字用）
+  --color-primary-a-light: #e8f2fc; // 主色 A 淺（icon 底）
+  --color-primary-b: #3dc7b8; // 主色 B：藍綠
+  --color-primary-b-dark: #2aa697; // 主色 B 深（文字用）
+  --color-primary-b-light: #e0f7f3; // 主色 B 淺（icon 底）
+  --color-highlight: #a8ece3; // 螢光筆點綴：淡藍綠
+  --color-bg: #fdfcfa; // 頁面底色：米白
+  --color-text-primary: #2d3436; // 主要文字：墨黑
+  --color-text-secondary: #7a8590; // 次要文字：灰
+  --color-surface: #ffffff; // 卡片／區塊底：純白
+  --color-border-thin: #e8e8e4; // 一般分隔細線
+  --color-skin: #e5b5a1; // 插畫人物膚色：低飽和粉米色，搭配藍／藍綠不搶眼
+  --color-bg-gray: rgb(221, 221, 221); // Hero 與導覽列底色
+
+  // 3.3 框線 Border
+  --border-width-thick: 5px; // 區塊／卡片外框
+  --border-width-btn: 3.75px; // 按鈕框線
+  --border-width-thin: 0.5px; // 一般分隔細線
+
+  // 全直角，不使用圓角
+  --radius-none: 0;
+
+  // 3.4 留白 Spacing
+  --space-block-padding: 2rem 1.5rem;
+
+  // 3.5 字體與字級 Typography
+  --font-family-base:
+    'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', -apple-system, sans-serif;
+  --font-family-display: 'Science Gothic', 'Helvetica Neue', Arial, sans-serif; // 英文藝術標題用
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-size-hero: 25px;
+  --font-size-section-title: 19px;
+  --font-size-body: 15px;
+  --font-size-label: 14px;
+  --line-height-base: 1.7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+
+// 3.7 捲動時輕輕淡入浮現，搭配 v-scroll-reveal 指令使用
+.scroll_reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+
+  &.is_visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 由左至右滑入，用法：v-scroll-reveal:left
+.scroll_reveal_left {
+  opacity: 0;
+  transform: translateX(-64px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+
+  &.is_visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 3.7 螢光筆塗重點，用法：<mark class="highlight_mark">關鍵字</mark>
+.highlight_mark {
+  background: linear-gradient(transparent 62%, var(--color-highlight) 62%);
+  color: inherit;
+}
